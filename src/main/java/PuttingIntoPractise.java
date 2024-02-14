@@ -26,7 +26,7 @@ public class PuttingIntoPractise {
         List<Transaction> exercise1 = transactions
                 .stream()
                 .filter(transaction -> transaction.getYear() == 2011)
-                .sorted((o1, o2) -> o1.getTrader().getName().charAt(0) - o2.getTrader().getName().charAt(0))
+                .sorted((o1, o2) -> o1.getValue()- o2.getValue())
                 .collect(Collectors.toList());
         System.out.println(exercise1 + "\n");
 
@@ -46,7 +46,7 @@ public class PuttingIntoPractise {
                 .map(transaction -> transaction.getTrader())
                 .filter(trader -> trader.getCity().equals("Cambridge"))
                 .distinct()
-                .sorted((o1, o2) -> o1.getName().charAt(0) - o2.getName().charAt(0))
+                .sorted((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()))
                 .collect(Collectors.toList());
 
         System.out.println(tradersFromCambridge + "\n");
@@ -57,7 +57,7 @@ public class PuttingIntoPractise {
                 .stream()
                 .map(transaction -> transaction.getTrader().getName())
                 .distinct()
-                .sorted((o1, o2) -> o1.charAt(0) - o2.charAt(0))
+                .sorted((o1, o2) -> o1.compareToIgnoreCase(o2))
                 .collect(Collectors.joining(" ,"));
 
         System.out.println(result + "\n");
